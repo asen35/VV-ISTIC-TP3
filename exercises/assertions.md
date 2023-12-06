@@ -11,3 +11,36 @@ Answer the following questions:
 4. In JUnit 4, an exception was expected using the `@Test` annotation, while in JUnit 5 there is a special assertion method `assertThrows`. In your opinion, what are the advantages of this new way of checking expected exceptions?
 
 ## Answer
+
+1. L'assertion rate à cause de l'imprécision de calcul sur les float. Pour contrer l'écart, il faut tester l'égalité avec un delta : assertEquals(3*.4, 1.2, 0.0001).
+
+2. `assertEquals` test l'égalité entre les valeurs, `assertSame` test légalité entre les références.
+    ```
+    Même Résultat :
+        int expected = 42;
+        int actual = 42;
+        assertEquals(expected, actual); //Vrai
+        assertSame(expected, actual); //Vrai
+    
+    Résultat différent :
+        String expected = new String("hello");
+        String actual = new String("hello");
+        assertEquals(expected, actual); //Vrai
+        assertSame(expected, actual); //Faux
+    ```
+
+3. `fail` peut être utilisé dans le cas où une exception est attendu :
+    ```
+    @Test
+    public void expectedException() {
+        try {
+            methodThrowsException();
+            fail("Expected exception was not thrown");
+        } catch (Exception e) {
+            assertNotNull(e);
+        }
+    }
+    ```
+
+4. Avantages :
+- Clarté du test : on sait à quel moment l'exception est levée dans le test
