@@ -67,14 +67,14 @@ Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to compl
 
 - Ensemble initial d’entrées
 
-| q1    | q2    | q3    | q4    | q5    | s         | Explication                                   |
-|-------|-------|-------|-------|-------|-----------|-----------------------------------------------|
-| true  | -     | -     | -     | -     | null      | Quand q1 est true, on ne regarde pas le reste |
-| false | true  | -     | -     | -     | ""        | Quand q2 est true, on ne regarde pas le reste |
-| false | false | true  | true  | false | ([])      |                                               |
-| false | false | false | true  | false | ([)       |                                               |
-| false | false | true  | false | false | ()[]      |                                               |
-| false | false | true  | true  | true  | () U [{}] |                                               |
+| q1    | q2    | q3    | q4    | q5    | s             | Explication                                   |
+|-------|-------|-------|-------|-------|---------------|-----------------------------------------------|
+| true  | -     | -     | -     | -     | null          | Quand q1 est true, on ne regarde pas le reste |
+| false | true  | -     | -     | -     | ""            | Quand q2 est true, on ne regarde pas le reste |
+| false | false | true  | true  | false | "([])"        |                                               |
+| false | false | false | true  | false | "([)"         |                                               |
+| false | false | true  | false | false | "()[]"        |                                               |
+| false | false | true  | true  | true  | "()" + "[{}]" |                                               |
 
 2.
 Nous avons écrit pour chaque entrée, définit dans le tableau ci-dessus, un cas de test. Puis, nous avons exécuté la classe

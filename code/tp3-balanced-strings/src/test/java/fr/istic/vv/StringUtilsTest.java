@@ -51,6 +51,6 @@ class StringUtilsTest {
 
     @Test
     void testStringContainsOtherChar() {
-        assertTrue(isBalanced("mot"));
+        assertFalse(isBalanced("mot"));
     }
 }
