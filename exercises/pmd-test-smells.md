@@ -16,8 +16,37 @@ Include the improved test code in this file.
 
 ## Answer
 
-1. [UseAssertSameInsteadOfAssertTrue.md](..%2Fpmd-documentation%2FUseAssertSameInsteadOfAssertTrue.md)
-2. [JUnitTestContainsTooManyAsserts.md](..%2Fpmd-documentation%2FJUnitTestContainsTooManyAsserts.md)
-3. [JUnitSpelling.md](..%2Fpmd-documentation%2FJUnitSpelling.md)
-4. [UnnecessaryBooleanAssertion.md](..%2Fpmd-documentation%2FUnnecessaryBooleanAssertion.md)
-5. [JUnitTestsShouldIncludeAssert.md](..%2Fpmd-documentation%2FJUnitTestsShouldIncludeAssert.md)
+[JUnitTestContainsTooManyAsserts.md](../pmd-documentation/JUnitTestContainsTooManyAsserts.md)
+
+Problème repéré :
+```bash
+    @Test
+    public void testNewArrayList() {
+      final ArrayList<E> list = makeObject();
+      assertTrue(list.isEmpty(), "New list is empty");
+      assertEquals(0, list.size(), "New list has size zero");
+
+      assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
+    }
+```
+
+Correction possible :
+```bash
+    @Test
+    public void testNewArrayListIsEmpty() {
+      final ArrayList<E> list = makeObject();
+      assertTrue(list.isEmpty(), "New list is empty");
+    }
+    
+    @Test
+    public void testNewArrayListHasSizeZero() {
+      final ArrayList<E> list = makeObject();
+      assertEquals(0, list.size(), "New list has size zero");
+    }
+    
+    @Test
+    public void testEmptyArrayListOutOfBoundOnFirstIndex() {
+      final ArrayList<E> list = makeObject();
+      assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
+    }
+```
