@@ -6,13 +6,13 @@
       <sourceFolder url="file://$MODULE_DIR$/code/commons-collections-master/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/code/commons-collections-master/src/test/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/code/tp3-balanced-strings/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/code/tp3-balanced-strings/src/test/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/code/tp3-balanced-strings/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/code/tp3-date/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/code/tp3-date/src/test/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/code/tp3-date/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/code/tp3-heap/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/code/tp3-heap/src/test/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/code/tp3-heap/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/code/tp3-ssl/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/code/tp3-ssl/src/test/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/code/tp3-ssl/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/code/commons-collections-master" />
     </content>
     <orderEntry type="jdk" jdkName="20" jdkType="JavaSDK" />

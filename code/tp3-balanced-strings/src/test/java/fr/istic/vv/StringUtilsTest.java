@@ -17,6 +17,16 @@ class StringUtilsTest {
     }
 
     @Test
+    void testStringAccolades() {
+        assertFalse(isBalanced("{"));
+    }
+
+    @Test
+    void testStringCrochets() {
+        assertFalse(isBalanced("["));
+    }
+
+    @Test
     void testStringIsPairWithNested() {
         assertTrue(isBalanced("([])"));
     }
@@ -25,10 +35,12 @@ class StringUtilsTest {
     void testStringWithNested1() {
         assertFalse(isBalanced("([)"));
     }
+
     @Test
     void testStringWithNested2() {
         assertFalse(isBalanced("((]"));
     }
+
     @Test
     void testStringWithNested3() {
         assertFalse(isBalanced("([}"));
