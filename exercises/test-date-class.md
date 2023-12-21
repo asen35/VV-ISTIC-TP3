@@ -46,10 +46,109 @@ Use the following steps to design the test suite:
 
 1. With the help of *Input Space Partitioning* design a set of initial test inputs for each method. Write below the characteristics and blocks you identified for each method. Specify which characteristics are common to more than one method.
 2. Evaluate the statement coverage of the test cases designed in the previous step. If needed, add new test cases to increase the coverage. Describe below what you did in this step.
-3. If you have in your code any predicate that uses more than two boolean operators check if the test cases written to far satisfy *Base Choice Coverage*. If needed add new test cases. Describe below how you evaluated the logic coverage and the new test cases you added.
+3. If you have in your code any predicate that uses more than two boolean operators check if the test cases written to far satisfy *Base Choice Coverage*. If needed, add new test cases. Describe below how you evaluated the logic coverage and the new test cases you added.
 4. Use PIT to evaluate the test suite you have so far. Describe below the mutation score and the live mutants. Add new test cases or refactor the existing ones to achieve a high mutation score.
 
 Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
 
 ## Answer
 
+1. 
+- `isValidDate` (du cours) :
+
+| Characteristics |                | Blocks |    |                              |                    |    |      |
+|-----------------|----------------|--------|----|------------------------------|--------------------|----|------|
+|                 |                | b1     | b2 | b3                           | b4                 | b5 | b6   |
+| q1              | Value of year  | < 0    | 0  | valid leap year              | valid common year  |    |      |
+| q2              | Value of month | < 0    | 0  | { 1, 3, 5, 7, 8, 10, 12}     | { 4, 6, 9, 11 }    | 2  | > 12 |
+| q3              | Value of day   | < 0    | 0  | >= 1 and <= max(month, year) | > max(month, year) |    |      |
+
+Cas de base q1b1, q2b3, q3b3
+
+Ensemble initial d’entrées
+
+| q1 | q2 | q3 | date     |
+|----|----|----|----------|
+| b2 | b3 | b3 | 0/1/1    |
+| b1 | b1 | b3 | 2000/1/1 |
+| b1 | b3 | b1 | 2000/1/1 |
+| b1 | b3 | b3 | 2000/1/1 |
+
+- `isLeapYear` :
+
+| Characteristics    | Block | Block |
+|--------------------|-------|-------|
+| q1 : year%400 == 0 | True  | False |
+| q2 : year%4 == 0   | True  | False |
+| q3 : year%100 != 0 | True  | False |
+
+Cas de base q1 = False, q2 = False, q3 = True
+
+Ensemble initial d’entrées
+
+| q1    | q2    | q3    | year |
+|-------|-------|-------|------|
+| true  | -     | -     | 400  |
+| false | true  | -     | 100  |
+| false | false | true  | 4    |
+| false | false | false | 2    |
+
+- `nextDate` :
+
+| Characteristics                                     | Block | Block |
+|-----------------------------------------------------|-------|-------|
+| q1 : 0 < month < 13 && 0 < day < monthLength(month) | True  | False |
+| q2 : month == 12 && 0 < day < monthLength(month)    | True  | False |
+| q3 : month == 12 && day == monthLength(month)       | True  | False |
+
+Cas de base q1 = False, q2 = False, q3 = False
+
+Ensemble initial d’entrées
+
+| q1    | q2    | q3    | date       |
+|-------|-------|-------|------------|
+| true  | false | false | 2023/11/21 |
+| false | true  | false | 2023/12/21 |
+| false | false | true  | 2023/12/31 |
+| false | false | false | 2023/-1/-1 |
+
+- `previousDate` :
+
+| Characteristics                                      | Block | Block |
+|------------------------------------------------------|-------|-------|
+| q1 : 0 < month < 13 && 1 < day =< monthLength(month) | True  | False |
+| q2 : month == 1 && 1 < day =< monthLength(month)     | True  | False |
+| q3 : month == 1 && day == 1                          | True  | False |
+
+Cas de base q1 = False, q2 = False, q3 = False
+
+Ensemble initial d’entrées
+
+| q1    | q2    | q3    | date       |
+|-------|-------|-------|------------|
+| true  | false | false | 2023/11/21 |
+| false | true  | false | 2023/1/21  |
+| false | false | true  | 2023/1/1   |
+| false | false | false | 2023/-1/-1 |
+
+- `compareTo` :
+- 
+| Characteristics |                   | Blocks          |                 |                  |
+|-----------------|-------------------|-----------------|-----------------|------------------|
+|                 |                   | b1              | b2              | b3               |
+| q1              | Compare of years  | year1 < year2   | year1 > year2   | year1 == year2   |
+| q2              | Compare of months | month1 < month2 | month1 > month2 | month1 == month2 |
+| q3              | Compare of days   | day1 < day2     | day1 > day2     | day1 == day2     |
+
+Cas de base q1b3, q2b1, q2b3
+
+Ensemble initial d’entrées
+
+| q1 | q2 | q3 | dates                              |
+|----|----|----|------------------------------------|
+| b2 | b1 | b3 | date1 = 2001/1/1, date2 = 2000/2/1 |
+| b3 | b3 | b3 | date1 = 2000/1/1, date2 = 2000/1/1 |
+| b3 | b1 | b1 | date1 = 2000/1/1, date2 = 2000/2/2 |
+| b3 | b1 | b3 | date1 = 2000/1/1, date2 = 2000/2/1 |
+
+- Il n'y a visiblement pas de caractéristiques communes

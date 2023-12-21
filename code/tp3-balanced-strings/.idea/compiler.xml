@@ -9,5 +9,8 @@
         <module name="tp3-balanced-strings" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tp3-balanced-strings" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
