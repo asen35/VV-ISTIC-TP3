@@ -150,3 +150,11 @@ Ensemble initial d’entrées
 | b3 | b1 | b3 | date1 = 2000/1/1, date2 = 2000/2/1 |
 
 - Il n'y a visiblement pas de caractéristiques communes
+
+2.
+- Code pas totalement couverte (hormis equals et toString) :
+  - Constructeur
+  - isValidDate
+  - monthLength
+  - compareTo  
+==> Ajout de cas de test pour tout couvrir

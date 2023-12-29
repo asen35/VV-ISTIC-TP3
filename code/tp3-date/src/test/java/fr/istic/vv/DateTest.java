@@ -8,7 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class DateTest {
 
     @Test
+    void testDateInvalid() {
+        assertThrows(IllegalArgumentException.class, () -> new Date(0, 0, 0));
+    }
+
+    @Test
     void testIsValidDateInvalid() {
+        assertFalse(isValidDate(0, 0, 0));
+    }
+
+    @Test
+    void testIsValidDateCommon() {
         assertTrue(isValidDate(1, 1, 0));
     }
 
@@ -142,6 +152,30 @@ class DateTest {
         int actual = date1.compareTo(date2);
 
         int expected = -1;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testCompareToYearLower() {
+        Date date1 = new Date(1, 1, 2000);
+        Date date2 = new Date(1, 1, 2001);
+
+        int actual = date1.compareTo(date2);
+
+        int expected = -1;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testCompareToMonthUpper() {
+        Date date1 = new Date(1, 2, 2000);
+        Date date2 = new Date(1, 1, 2000);
+
+        int actual = date1.compareTo(date2);
+
+        int expected = 1;
 
         assertEquals(expected, actual);
     }
