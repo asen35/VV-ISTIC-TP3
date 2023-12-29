@@ -77,13 +77,12 @@ Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to compl
 | false | false | true  | true  | true  | "()" + "[{}]" |                                               |
 
 2.
-Nous avons écrit pour chaque entrée, définit dans le tableau ci-dessus, un cas de test. Puis, nous avons exécuté la classe
-de test en mode couverture. Taux de couverture : 82%.
-Nous avons rajouté des cas de test pour pousser la couverture à 100%.
+- Nous avons écrit pour chaque entrée, définit dans le tableau ci-dessus, un cas de test. Puis, nous avons exécuté la classe de test en mode couverture. Taux de couverture : 82%.
+- Nous avons rajouté des cas de test pour pousser la couverture à 100%.
 
 3. 
-La couverture structurelle étant de 100% avec les tests écrits précédemment, la couverture des prédicats conjonctifs est complète.
-Dans le code, il reste un prédicat disjonctif à couvrir ``if (c == '{' || c == '(' || c == '[')``, donc au maximum 3 cas de test avec pour entrées : ``"{"``, ``"("`` (déjà testé avec les autres tests), ``"["``.
+- La couverture structurelle étant de 100% avec les tests écrits précédemment, la couverture des prédicats conjonctifs est complète.
+- Dans le code, il reste un prédicat disjonctif à couvrir ``if (c == '{' || c == '(' || c == '[')``, donc au maximum 3 cas de test avec pour entrées : ``"{"``, ``"("`` (déjà testé avec les autres tests), ``"["``.
 
 4.
-La couverture par mutation et l'efficacité des tests sont maximales. Uniquement une ligne n'est pas couverte qui est celle du constructeur privé vide.
+- La couverture par mutation et l'efficacité des tests sont maximales. Uniquement une ligne n'est pas couverte qui est celle du constructeur privé vide.

@@ -158,3 +158,6 @@ Ensemble initial d’entrées
   - monthLength
   - compareTo  
 ==> Ajout de cas de test pour tout couvrir
+
+3.
+- Tout les prédicats sont couverts (soit un opérateur, soit conjonctifs).
