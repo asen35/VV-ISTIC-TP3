@@ -76,60 +76,58 @@ Ensemble initial d’entrées
 
 - `isLeapYear` :
 
-| Characteristics    | Block | Block |
-|--------------------|-------|-------|
-| q1 : year%400 == 0 | True  | False |
-| q2 : year%4 == 0   | True  | False |
-| q3 : year%100 != 0 | True  | False |
+| Characteristics                   | Block | Block |
+|-----------------------------------|-------|-------|
+| q1 : year%400 == 0                | True  | False |
+| q2 : year%4 == 0 && year%100 != 0 | True  | False |
 
-Cas de base q1 = False, q2 = False, q3 = True
+Cas de base q1 = False, q2 = False
 
 Ensemble initial d’entrées
 
-| q1    | q2    | q3    | year |
-|-------|-------|-------|------|
-| true  | -     | -     | 400  |
-| false | true  | -     | 100  |
-| false | false | true  | 4    |
-| false | false | false | 2    |
+| q1    | q2    | year |
+|-------|-------|------|
+| true  | -     | 400  |
+| false | true  | 4    |
+| false | false | 2    |
 
 - `nextDate` :
 
 | Characteristics                                     | Block | Block |
 |-----------------------------------------------------|-------|-------|
 | q1 : 0 < month < 13 && 0 < day < monthLength(month) | True  | False |
-| q2 : month == 12 && 0 < day < monthLength(month)    | True  | False |
+| q2 : 0 < month < 12 && day == monthLength(month)    | True  | False |
 | q3 : month == 12 && day == monthLength(month)       | True  | False |
 
 Cas de base q1 = False, q2 = False, q3 = False
 
 Ensemble initial d’entrées
 
-| q1    | q2    | q3    | date       |
-|-------|-------|-------|------------|
-| true  | false | false | 2023/11/21 |
-| false | true  | false | 2023/12/21 |
-| false | false | true  | 2023/12/31 |
-| false | false | false | 2023/-1/-1 |
+| q1    | q2    | q3    | date       | COMMENTAIRE                           |
+|-------|-------|-------|------------|---------------------------------------|
+| true  | false | false | 2023/11/21 |                                       |
+| false | true  | false | 2023/11/30 |                                       |
+| false | false | true  | 2023/12/31 |                                       |
+| false | false | false | 2023/0/0   | Impossible de créer une date invalide |
 
 - `previousDate` :
 
 | Characteristics                                      | Block | Block |
 |------------------------------------------------------|-------|-------|
 | q1 : 0 < month < 13 && 1 < day =< monthLength(month) | True  | False |
-| q2 : month == 1 && 1 < day =< monthLength(month)     | True  | False |
+| q2 : 1 < month < 13 && 1 < day == 1                  | True  | False |
 | q3 : month == 1 && day == 1                          | True  | False |
 
 Cas de base q1 = False, q2 = False, q3 = False
 
 Ensemble initial d’entrées
 
-| q1    | q2    | q3    | date       |
-|-------|-------|-------|------------|
-| true  | false | false | 2023/11/21 |
-| false | true  | false | 2023/1/21  |
-| false | false | true  | 2023/1/1   |
-| false | false | false | 2023/-1/-1 |
+| q1    | q2    | q3    | date       | COMMENTAIRE                           |
+|-------|-------|-------|------------|---------------------------------------|
+| true  | false | false | 2023/11/21 |                                       |
+| false | true  | false | 2023/2/1   |                                       |
+| false | false | true  | 2023/1/1   |                                       |
+| false | false | false | 2023/0/0   | Impossible de créer une date invalide |
 
 - `compareTo` :
 - 

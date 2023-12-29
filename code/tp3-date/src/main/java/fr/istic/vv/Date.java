@@ -18,7 +18,7 @@ class Date implements Comparable<Date> {
     public static boolean isValidDate(int day, int month, int year) {
         if (0 < month && month < 13) {
             int monthLength = monthLength(month, year);
-            if (0 < day && day < monthLength) {
+            if (0 < day && day < monthLength + 1) {
                 return true;
             }
         }
@@ -64,22 +64,22 @@ class Date implements Comparable<Date> {
     }
 
     public Date previousDate() {
-        Date nextDate = new Date(day, month, year);
+        Date previousDate = new Date(day, month, year);
 
-        if (2 < nextDate.day) {
-            nextDate.day--;
+        if (1 < previousDate.day) {
+            previousDate.day--;
         } else {
-            if (2 < month) {
-                nextDate.month--;
-                nextDate.day = monthLength(nextDate.month, nextDate.year);
+            if (1 < month) {
+                previousDate.month--;
+                previousDate.day = monthLength(month - 1, year);
             } else {
-                nextDate.year--;
-                nextDate.month = 12;
-                nextDate.day = 31;
+                previousDate.year--;
+                previousDate.month = 12;
+                previousDate.day = 31;
             }
         }
 
-        return nextDate;
+        return previousDate;
     }
 
     public int compareTo(Date other) {
@@ -98,4 +98,20 @@ class Date implements Comparable<Date> {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Date otherDate = (Date) obj;
+        return this.day == otherDate.day && this.month == otherDate.month && this.year == otherDate.year;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%02d/%02d/%04d", day, month, year);
+    }
 }
