@@ -160,4 +160,4 @@ Ensemble initial d’entrées
 ==> Ajout de cas de test pour tout couvrir
 
 3.
-- Tout les prédicats sont couverts (soit un opérateur, soit conjonctifs).
+- Uniquement le prédicat de isLeapYear est a vérifier et l'est déjà avec les tests actuels, les autres prédicats sont couverts (soit un opérateur, soit conjonctifs).
