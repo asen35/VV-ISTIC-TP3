@@ -179,4 +179,28 @@ class DateTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testCompareToDayUpper() {
+        Date date1 = new Date(2, 1, 2000);
+        Date date2 = new Date(1, 1, 2000);
+
+        int actual = date1.compareTo(date2);
+
+        int expected = 1;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testCompareToDayLower() {
+        Date date1 = new Date(1, 1, 2000);
+        Date date2 = new Date(2, 1, 2000);
+
+        int actual = date1.compareTo(date2);
+
+        int expected = -1;
+
+        assertEquals(expected, actual);
+    }
 }

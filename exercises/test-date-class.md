@@ -161,3 +161,23 @@ Ensemble initial d’entrées
 
 3.
 - Uniquement le prédicat de isLeapYear est a vérifier et l'est déjà avec les tests actuels, les autres prédicats sont couverts (soit un opérateur, soit conjonctifs).
+
+4.
+- Score de mutation : 80%
+- Mutants en vie :
+  - isValidDate :
+    - `if (0 < month && month < 13)`
+      - changed conditional boundary → SURVIVED
+      - changed conditional boundary → SURVIVED
+    - `if (0 < day && day < monthLength + 1)`
+      - changed conditional boundary → SURVIVED
+      - changed conditional boundary → SURVIVED
+  - monthLength :
+    - `if (isLeapYear(year))`
+      - negated conditional → SURVIVED
+  - isLeapYear
+    - `return year % 400 == 0 || ( year % 4 == 0 && year % 100 != 0 );`
+      - Replaced integer modulus with multiplication → SURVIVED
+  - previousDate
+    - `previousDate.day = monthLength(month - 1, year);`
+      - Replaced integer subtraction with addition → SURVIVED

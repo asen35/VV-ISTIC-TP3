@@ -1,5 +1,9 @@
 package fr.istic.vv;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class Date implements Comparable<Date> {
     private int day;
     private int month;
@@ -29,9 +33,12 @@ class Date implements Comparable<Date> {
     private static int monthLength(int month, int year) {
         int monthLength = -1;
 
-        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+        List<Integer> monthsWith31Days = Arrays.asList(1, 3, 5, 7, 8, 10, 12);
+        List<Integer> monthsWith30Days = Arrays.asList(4, 6, 9, 11);
+
+        if (monthsWith31Days.contains(month)) {
             monthLength = 31;
-        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+        } else if (monthsWith30Days.contains(month)) {
             monthLength = 30;
         } else if (month == 2) {
             if (isLeapYear(year)) {
@@ -95,7 +102,13 @@ class Date implements Comparable<Date> {
             } else if (month < other.month) {
                 return -1;
             } else {
-                return Integer.compare(day, other.day);
+                if (other.day < day) {
+                    return 1;
+                } else if (day < other.day){
+                    return -1;
+                } else {
+                    return 0;
+                }
             }
         }
     }
