@@ -168,16 +168,18 @@ Ensemble initial d’entrées
   - isValidDate :
     - `if (0 < month && month < 13)`
       - changed conditional boundary → SURVIVED
-      - changed conditional boundary → SURVIVED
+      - changed conditional boundary → SURVIVED\
+      ==> Ajouté des tests sur tous les mois valides + 0 et 13 impossibles ne suffit pas
+      ==> Ajouté des tests sur tous les mois valides et invalides en aléatoire ne suffit pas
     - `if (0 < day && day < monthLength + 1)`
       - changed conditional boundary → SURVIVED
       - changed conditional boundary → SURVIVED
-  - monthLength :
+  - monthLength (méthodes privées notamment utilisée dans isValidDate):
     - `if (isLeapYear(year))`
-      - negated conditional → SURVIVED
+      - negated conditional → SURVIVED\
+      ==> ajouté un tests `nextDate` sur `28/02/0000` suffit
   - isLeapYear
     - `return year % 400 == 0 || ( year % 4 == 0 && year % 100 != 0 );`
-      - Replaced integer modulus with multiplication → SURVIVED
-  - previousDate
-    - `previousDate.day = monthLength(month - 1, year);`
-      - Replaced integer subtraction with addition → SURVIVED
+      - Replaced integer modulus with multiplication → SURVIVED\
+      ==> Seul cas où `year % 400 == 0` == `year * 400 == 0` et `year % 4 == 0` == `year * 4 == 0` est quand year = 0\
+      ==> Cas où `year % 100 != 0` == `year * 100 != 0` est quand year n'est pas un multiple de 100

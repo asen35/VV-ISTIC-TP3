@@ -1,6 +1,5 @@
 package fr.istic.vv;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,7 +50,9 @@ class Date implements Comparable<Date> {
         return monthLength;
     }
 
-    public static boolean isLeapYear(int year) { return year % 400 == 0 || ( year % 4 == 0 && year % 100 != 0 ); }
+    public static boolean isLeapYear(int year) {
+        return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
+    }
 
     public Date nextDate() {
         Date nextDate = new Date(day, month, year);
@@ -80,7 +81,7 @@ class Date implements Comparable<Date> {
         } else {
             if (1 < month) {
                 previousDate.month--;
-                previousDate.day = monthLength(month - 1, year);
+                previousDate.day = monthLength(previousDate.month, year);
             } else {
                 previousDate.year--;
                 previousDate.month = 12;
@@ -104,7 +105,7 @@ class Date implements Comparable<Date> {
             } else {
                 if (other.day < day) {
                     return 1;
-                } else if (day < other.day){
+                } else if (day < other.day) {
                     return -1;
                 } else {
                     return 0;

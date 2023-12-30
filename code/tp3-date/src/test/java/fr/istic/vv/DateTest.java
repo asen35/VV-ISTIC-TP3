@@ -2,7 +2,8 @@ package fr.istic.vv;
 
 import org.junit.jupiter.api.Test;
 
-import static fr.istic.vv.Date.*;
+import static fr.istic.vv.Date.isLeapYear;
+import static fr.istic.vv.Date.isValidDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DateTest {
@@ -28,8 +29,8 @@ class DateTest {
     }
 
     @Test
-    void testIsLeapYear400Multiple() {
-        assertTrue(isLeapYear(400));
+    void testIsLeapYear400Multiple3() {
+        assertFalse(isLeapYear(100));
     }
 
     @Test
@@ -71,6 +72,17 @@ class DateTest {
         Date actual = date.nextDate();
 
         Date expected = new Date(1, 1, 2024);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testNextDateNoLeap() {
+        Date date = new Date(28, 2, 1);
+
+        Date actual = date.nextDate();
+
+        Date expected = new Date(1, 3, 1);
 
         assertEquals(expected, actual);
     }
